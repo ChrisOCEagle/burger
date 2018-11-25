@@ -5,9 +5,9 @@ USE burgers_db;
 -- Create a `burgers` table with these fields:
 CREATE TABLE burgers (
     -- id: an auto incrementing int that serves as the primary key.
-    id INT PRIMARY KEY AUTO_INCREMENT,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     -- burger_name: a string.
-    burger_name VARCHAR( 255 ) NOT NULL
+    burger_name VARCHAR( 255 ) NOT NULL,
     -- devoured: a boolean.
     devoured BOOLEAN
 );
