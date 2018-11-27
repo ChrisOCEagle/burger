@@ -5,6 +5,9 @@ var PORT = process.env.PORT || 3000;
 
 var app = express();
 
+// serve static content for the app from the public directory
+app.use(express.static("public"));
+
 // parse the req.body as a json to make it readable
 app.use(express.urlencoded( { extended: true } ));
 app.use(express.json());
