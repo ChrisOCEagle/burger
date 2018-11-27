@@ -3,17 +3,17 @@ var orm = require("../config/orm.js");
 
 var burger = {
     select: function(whatToSelect, cb) {
-        orm.select(whatToSelect, "burger", function(result) {
+        orm.select(whatToSelect, "burgers", function(result) {
             cb(result);
         });
     },
     insert: function(colInput, insertedVal, cb) {
-        orm.insert("burger", colInput, insertedVal, function(results) {
+        orm.insert("burgers", colInput, insertedVal, function(results) {
             cb(results);
         });
     },
     update: function(colValsObj, condition, cb) {
-        orm.update("burger", colValsObj, condition, function(result) {
+        orm.update("burgers", colValsObj, condition, function(result) {
             cb(result);
         });
     }
