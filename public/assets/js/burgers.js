@@ -2,39 +2,40 @@
 $(function() {
     // when the button to eat the burger is clicked
     $(".change-devoured").on("click", function() {
-        // grab both the "id" and the data associated with the button that is clicked
+        // grab the id and the data associated with the button that is clicked
         var id = $(this).data("id"),
-            newDevoured = $(this).data("devoured");
-        // store the data into a property of an object
+            devoured = $(this).data("devoured");
+        
+        // store the data into an object
         var newDevouredState = {
-            devoured: newDevoured
+            devoured: JSON.stringify(devoured),
         };
-        // send the PUT request
-        $.ajax("/api/burgers/" + id, {
+
+        // send the data to the server, updating existing data = PUT request
+        $.ajax("/api/burger/" + id, {
             method: "PUT",
-            data: newDevouredState
-        }).then(function() {
-            console.log("changed devoured to " + newDevoured);
-            // reload the page to get the updated list
+            data: newDevouredState,
+        }).then(() => {
+            console.log("Changed devoured to " + devoured);
             location.reload();
         });
     });
     // when the submit button is clicked
-    $(".create-form").on("submit", function(event) {
-        // be sure to prevent default on the submit
+    $(".create-form").on("submit", event => {
         event.preventDefault();
+
         // create a new object that will contain the data
         var newBurger = {
             name: $("#burger").val().trim(),
-            devoured: false
+            devoured: JSON.stringify(false),
         };
-        // send the POST request
+
+        // send the data to the server, creating new data = POST request
         $.ajax("/api/burgers", {
             method: "POST",
-            data: newBurger
-        }).then(function() {
+            data: newBurger,
+        }).then(() => {
             console.log("Created a new burger");
-            // reload the page to get the updated list
             location.reload();
         });
     });

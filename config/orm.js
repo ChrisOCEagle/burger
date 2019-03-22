@@ -48,7 +48,7 @@ function printQuestionMarks(num) {
 function objToSql(object) {
     var arr = [];
     // loops through the keys within the object
-    for (var keys in object) {
+    for (var key in object) {
         // grab the value at each key
         var value = object[key];
         // check to skip hidden properties

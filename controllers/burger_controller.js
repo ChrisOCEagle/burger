@@ -12,19 +12,17 @@ router.get("/", function(req, res) {
     });
 });
 router.post("/api/burgers", function(req, res) {
-    burger.insert(["burger_name", "devoured"],
-                  [req.body.name, req.body.devoured],
-                  function(result) {
-                      res.json({ id: result.insertId });
-                    })
+    var cols = ["burger_name", "devoured"],
+        vals = [req.body.name, JSON.parse(req.body.devoured)];
+    burger.insert(cols, vals, result => res.json({ id: result.insertId }) );
 });
-router.put("/api/burgers/:id", function(req, res) {
+router.put("/api/burger/:id", function(req, res) {
     var condition = " id = " + req.params.id;
     burger.update({
-        devoured: req.body.devoured
+        devoured: JSON.parse(req.body.devoured)
     },
     condition,
-    function(result) {
+    result => {
         // if no rows were changed
         if (result.changedRows === 0) {
             // then the ID must not exist => a 404

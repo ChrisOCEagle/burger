@@ -1,10 +1,11 @@
 <li>
-    {{burger_name}}
-    <button class="change-devoured" data-id="{{id}}" data-devoured="{{devoured}}">
+    <div class="list-item-content">
+        {{burger_name}}
         {{#if devoured}}
-        I'm hungry.
-        {{else}}
-        I'm full.
+            <button class="change-devoured" data-id="{{id}}" data-devoured="{{devoured}}">
+                Devour it!
+            </button>
+        {{else}}        
         {{/if}}
-    </button>
+    </div>
 </li>
